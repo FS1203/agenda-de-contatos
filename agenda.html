@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agenda de Contatos</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 50%;
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+
+    <form id="formularioContato">
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" name="nome" required>
+        <br>
+        <label for="telefone">Telefone:</label>
+        <input type="tel" id="telefone" name="telefone" required>
+        <br>
+        <button type="button" onclick="cadastrarContato()">Cadastrar</button>
+    </form>
+
+    <table id="tabelaContatos">
+        <tr>
+            <th>Nome</th>
+            <th>Telefone</th>
+        </tr>
+    </table>
+
+    <script>
+        function cadastrarContato() {
+            // Obter os valores do formulário
+            var nome = document.getElementById('nome').value;
+            var telefone = document.getElementById('telefone').value;
+
+            // Validar se os campos não estão vazios
+            if (nome.trim() === '' || telefone.trim() === '') {
+                alert('Por favor, preencha todos os campos.');
+                return;
+            }
+
+            // Adicionar uma nova linha à tabela
+            var tabela = document.getElementById('tabelaContatos');
+            var novaLinha = tabela.insertRow(-1);
+
+            // Adicionar células à nova linha
+            var celulaNome = novaLinha.insertCell(0);
+            var celulaTelefone = novaLinha.insertCell(1);
+
+            // Preencher as células com os valores do formulário
+            celulaNome.innerHTML = nome;
+            celulaTelefone.innerHTML = telefone;
+
+            // Limpar os campos do formulário
+            document.getElementById('nome').value = '';
+            document.getElementById('telefone').value = '';
+        }
+    </script>
+
+</body>
+</html>
